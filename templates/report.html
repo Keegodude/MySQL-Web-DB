@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Filtered View Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th> SongID </th>
+                <th> ArtistID </th>
+                <th> Song </th>
+                <th> Artist </th>
+                <th> Genre </th>
+                <th> Decade </th>
+                <th> Artist monthly listeners </th>
+                <th> Artist Country of Origin </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in report_data %}
+                <tr>
+                    <td> {{ row[0] }} </td>
+                    <td> {{ row[2] }} </td>
+                    <td> {{ row[1] }} </td>
+                    <td> {{ row[6] }} </td>
+                    <td> {{ row[3] }} </td>
+                    <td> {{ row[4] }} </td>
+                    <td> {{ row[7] }} </td>
+                    <td> {{ row[8] }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/show_songs/{{ report_data[0][9] }}"><button>Back to Playlists</button></a>
+</body>
+</html>

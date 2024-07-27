@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Songs</title>
+</head>
+<body>
+    <h1>Playlist Songs</h1>
+    <ul>
+        {% for song in playlist_songs %}
+            <li>{{ song[1] }} --- {{ song[2] }}<a href="/delete_song_from_pl/{{song[0]}}">    --Delete from playlist</a></li>
+
+        {% endfor %}
+    </ul>
+    <h2>Add New Song</h2>
+    <form action="/add_song_to_playlist" method="post">
+        <select name="song_id">
+            {% for song in available_songs %}
+                <option value="{{ song[0] }}">{{ song[1] }}- {{ song[2] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Add Song</button>
+    </form>
+    <h2>Generate Filtered Playlist Report(Don't select a value to ignore that filter)</h2>
+         <form action="/generate_report" method="post">
+        <label for="genre">Genre:</label>
+        <select name="genre" id="genre">
+            <option value="">Select Genre</option>
+            {% for songInfo in playlist_songs_genres %}
+                <option value="{{ songInfo[0] }}">{{ songInfo[0] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="decade">Decade:</label>
+        <select name="decade" id="decade">
+            <option value="">Select song decade</option>
+            {% for songInfo in playlist_songs_decades %}
+                <option value="{{ songInfo[0] }}">{{ songInfo[0] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="artistmonthly">Max Monthly Listeners:</label>
+        <select name="artistmonthly" id="artistmonthly">
+            <option value="">Select max</option>
+            <option value="10000">10000</option>
+            <option value="100000">100000</option>
+            <option value="1000000">1000000</option>
+            <option value="10000000">10000000</option>
+            <option value="100000000">100000000</option>
+        </select><br>
+        <label for="artist_country">Artist Country of Origin:</label>
+        <select name="artist_country" id="artist_country">
+            <option value="">Select Country</option>
+            {% for songInfo in playlist_songs_artist_country %}
+                <option value="{{ songInfo[0] }}">{{ songInfo[0] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="sortvariable">Variable to sort report on:</label>
+        <select name="sortvariable" id="sortvariable">
+            <option value="">Select sort var</option>
+            <option value="Songs.genre">Song genre</option>
+            <option value="Songs.decade">Song decade of release</option>
+            <option value="Artists.monthly_listeners">Max monthly listeners</option>
+            <option value="Artists.country">Artist Country</option>
+        </select><br>
+        <button type="submit">Generate Report</button>
+    </form>
+
+    <h2>Return to Playlists</h2>
+    <a href="/playlists"><button>Back to Playlists</button></a>
+</body>
+</html>

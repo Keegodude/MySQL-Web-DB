@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Meeting</title>
+</head>
+<body>
+    <h1>Edit Meeting</h1>
+    <form action="/edit_meeting/{{ meeting[0] }}" method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="{{ meeting[1] }}" required><br>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" value="{{ meeting[2] }}" required><br>
+
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration" value="{{ meeting[3] }}" required><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="{{ meeting[4] }}" required><br>
+
+        <label for="club_id">Club ID:</label>
+        <input type="text" id="club_id" name="club_id" value="{{ meeting[5] }}" required><br>
+
+        <label for="room_id">Room ID:</label>
+        <input type="text" id="room_id" name="room_id" value="{{ meeting[6] }}" required><br>
+
+        <label for="invitedCount">Invited Count:</label>
+        <input type="text" id="invitedCount" name="invitedCount" value="{{ meeting[7] }}" required><br>
+
+        <label for="acceptedCount">Accepted Count:</label>
+        <input type="text" id="acceptedCount" name="acceptedCount" value="{{ meeting[8] }}" required><br>
+
+        <button type="submit">Update Meeting</button>
+    </form>
+
+</body>
+</html>

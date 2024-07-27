@@ -1,0 +1,19 @@
+BREAKDOWN OF CONTENTS:
+
+templates: folder with htmls used by main.py
+
+CreateReport.sql: Run in mysql environment to create the stored procedure used in main.py to generate reports
+
+index report, transactions, lessons learned.txt: Text file containing discussion of indexes used, concurrency info, and lessons learned throughout the project.
+
+main.py: Main script
+
+musicdb_dump.sql: Run in mysql environment to create a copy of the database I used in the application, called music.
+
+
+HOW TO USE:
+
+1. Keep templates and main.py in the same location
+2. Run musicdb_dump.sql and CreateReport.sql in your mysql environment.
+3.Fill in your mysql environment connection details into db_config(line 11) of main.py so that the script can interact with the database.
+4. Run main.py, the console should provide a link to the app page.

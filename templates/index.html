@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings</title>
+</head>
+<body>
+    <h1>Meetings</h1>
+    <ul>
+        {% for meeting in meetings %}
+        <li>{{ meeting[0] }} - {{ meeting[1] }} - {{ meeting[2] }} - {{ meeting[3] }} <a href="/edit_meeting/{{ meeting[0] }}">Edit</a> <form action="/delete_meeting/{{ meeting[0] }}" method="post"><button type="submit">Delete</button></form></li>
+        {% endfor %}
+    </ul>
+    <a href="/add_playlist">Add Meeting</a>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Duration</th>
+        <th>Description</th>
+    </tr>
+    {% for meeting in meetings %}
+    <tr>
+        <td>{{ meeting[1] }}</td>
+        <td>{{ meeting[2] }}</td>
+        <td>{{ meeting[3] }}</td>
+        <td>{{ meeting[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
